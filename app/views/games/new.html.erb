@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h2 class="mb-3">New game!</h2>
+
+  <ul class="list-group list-group-horizontal">
+  <% @letters.each do |letter| %>
+      <li class="list-group-item list-group-item-info p-5 m-2"><h3> <%= letter.capitalize %></h3></li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="container mt-5">
+    <div class="d-flex">
+      <form action="/score" method="post" data-turbo="false" class="d-flex flex-column">
+        <label for="new" class="mb-2">What is the longest word you can find?</label>
+        <input type="text"
+        name="userinput"
+        placeholder="goat"
+        id="userinput"
+        class="mb-2"
+        >
+        <button type="submit" class="btn btn-primary mt-3">submit</button>
+        <%# for use letters @ score: send letters value back to controller %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :letters, @letters %>
+      </form>
+    </div>
+</div>
