@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   end
 
   def score
-    @userinput = params[:userinput] # with .chars "do" => ["d", "o"]
+    @userinput = params[:userinput].upcase # with .chars "do" => DO => ["D", "O"]
     @letterlist = params[:letters] # => "T P G O J S W K N F"
     @letters = params[:letters].split # => ["T", "P", "G", "O", "J", "S", "W", "K", "N", "F"]
 
